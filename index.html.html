@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Project Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: red;
+            border-bottom: 2px solid black;
+            padding-bottom: 5px;
+        }
+        h2, h3, h4, h5 {
+            color: blue;
+            border-bottom: 2px solid black;
+            padding-bottom: 5px;
+        }
+
+        /* Image styling */
+        img {
+            display: block;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            max-width: 350px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        img:hover {
+            opacity: 0.85;
+        }
+
+        /* Modal for image enlargement */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+        #caption {
+            text-align: center;
+            color: #f1f1f1;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #f1f1f1;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ESP32 Web Server with LED control using Arduino IDE</h1>
+
+        <div class="section">
+            <h2>Introduction :</h2>
+            <p>
+                In the Internet, all the websites are hosted on a computer and this computer is called a server. Since this particular server is used to serve web pages and web requests, we call it a web server. Instead of using a computer, we can also use an ESP32 to respond to web requests, thanks to the ESP32’s built-in WiFi. The ESP32 can not only respond to requests, but also serve small webpages, that were either hard coded to the code or stored in flash storage of an SD card. The project works by creating a web server on the ESP32 microcontroller that serves a web page to a client device, such as a computer or mobile phone, over Wi-Fi. The web page contains controls that allow you to turn the LED lights on or off.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Abstract :</h2>
+            <p>
+                In an increasingly connected world, the ability to remotely control devices is essential for smart home automation and IOT applications. However, implementing such control systems often requires complex hardware setups, specialized software, and significant technical expertise, which can be a barrier to adoption for hobbyists and developers. To overcome this here is the project that works by creating a webserver on the ESP32 microcontroller that serves a web page to a client device, such as a computer or mobile phone, over Wi-Fi. The webpage contains controls that allows you to turn the client device on or off. By leveraging capabilities of ESP32 this solution is designed to be cost-effective, easy to implement, and highly adaptable for various IOT applications.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Requirements :</h2>
+            <p><strong>Hardware Components:</strong></p>
+            <ul>
+                <li>ESP32 Development Board</li>
+                <li>LED</li>
+                <li>Current-Limiting Resistor (220Ω or 330Ω)</li>
+                <li>Breadboard</li>
+                <li>Jumper Wires</li>
+            </ul>
+            <p><strong>Software Components:</strong></p>
+            <ul>
+                <li>Arduino IDE</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Block Diagram :</h2>
+            <p>Below is the block diagram representing the architecture of the system:</p>
+            <img src="D:\manisaiteja portfolio\esp32blockdiagram.jpg.jpg" alt="Block Diagram">
+        </div>
+
+        <div class="section">
+            <h2>Results :</h2>
+            <p>
+                After compiling and uploading your ESP32 web server code in the Arduino IDE, open the Serial Monitor. The ESP32 connects to your Wi-Fi using the provided SSID and password, and once connected, it receives an IP address from your router. The code should include WiFi.localP() to print this IP address in the Serial Monitor. Use this IP in a browser to access the ESP32 web server and control the LED.
+            </p>
+            <img src="D:\manisaiteja portfolio\result.jpg.jpg" alt="Serial Monitor Output">
+            <img src="D:\manisaiteja portfolio\result1.jpg" alt="Web Page with LED Controls">
+
+            <div style="margin-top: 20px;">
+                <h3>Case 1 -</h3>
+                <p>When a user activates LED 1 via the ESP32 web server, its GPIO is set to HIGH, turning it on, while LED 2 remains OFF (LOW). The web page updates to reflect the current LED states.</p>
+                <img src="D:\manisaiteja portfolio\case1.jpg" alt="Case 1: Only LED 1 ON">
+
+                <h4>Case 2 -</h4>
+                <p>When the user activates LED 2 via the ESP32 web server, its GPIO is set to HIGH, turning it on, while LED 1 remains OFF. The web page updates to reflect both LED states.</p>
+                <img src="D:\manisaiteja portfolio\case2.jpg" alt="Case 2: Only LED 2 ON">
+
+                <h5>Case 3 -</h5>
+                <p>When both LEDs are activated via the ESP32 web server, their GPIO pins are set to HIGH, turning them on. The web page updates to confirm both LEDs are ON and independently controlled.</p>
+                <img src="D:\manisaiteja portfolio\case3.jpg" alt="Case 3: Both LEDs ON">
+
+                <h4>Case 4 -</h4>
+                <p>When both LEDs are off, the ESP32 sets their GPIO pins to LOW, keeping them unlit. The web page shows both LEDs are OFF, awaiting further user commands.</p>
+                <img src="D:\manisaiteja portfolio\case4.jpg" alt="Case 4: Both LEDs OFF">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for enlarged image -->
+    <div id="imgModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('imgModal');
+        const modalImg = document.getElementById('modalImg');
+        const captionText = document.getElementById('caption');
+        const closeBtn = document.querySelector('.close');
+
+        document.querySelectorAll('.container img').forEach(function (img) {
+            img.addEventListener('click', function () {
+                modal.style.display = 'block';
+                modalImg.src = this.src;
+                captionText.textContent = this.alt;
+            });
+        });
+
+        closeBtn.onclick = function () {
+            modal.style.display = 'none';
+        };
+
+        modal.onclick = function (e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
